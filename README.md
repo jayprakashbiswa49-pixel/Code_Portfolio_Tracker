@@ -1,179 +1,159 @@
 # 📈 Stock Portfolio Tracker
 
-A beginner-friendly yet professional command-line **Stock Portfolio Tracker** built with Python. This project allows users to manage stock holdings, calculate real-time portfolio values using fixed market prices, update stock quantities dynamically, and export structured reports to both TXT and CSV formats.
+A beginner-friendly, clean, and interactive command-line **Stock Portfolio Tracker** written in Python. This project allows users to view stock prices, enter stock symbols and quantities, track total portfolio investments, update stock quantities dynamically, and save reports to both TXT and CSV files.
 
-Developed as part of the **CodeAlpha Python Development Internship**.
+Developed as part of the **CodeAlpha Python Development Internship (Task 2)**.
 
 ---
 
 ## 📌 Project Objective
 
-The primary objective of this project is to build an interactive, console-based stock portfolio manager demonstrating fundamental Python programming concepts, including:
-- Utilizing **Python Dictionaries** for key-value mappings (stock prices & portfolio holdings).
-- Implementing **Modular Functions** for separation of concerns and maintainability.
-- Applying **Loops and Conditional Statements** to create an interactive menu-driven interface.
-- Ensuring robust **User Input Validation** and graceful error handling.
-- Performing **Basic Arithmetic Operations** for financial calculations.
-- Handling persistent storage via **File I/O** (TXT and CSV export).
+The primary objective of this project is to build a simple and efficient stock portfolio tracker demonstrating essential Python programming fundamentals:
+- **Python Dictionaries**: Storing hardcoded stock prices and dynamic user portfolio holdings.
+- **Functions**: Organizing the program into modular, single-responsibility functions.
+- **Loops & Conditionals**: Driving an interactive terminal menu with input validation.
+- **Arithmetic Operations**: Calculating investment values (`Price × Quantity`) and portfolio totals.
+- **File Handling**: Writing portfolio summaries to `portfolio.txt` and `portfolio.csv`.
 
 ---
 
 ## 🚀 Features
 
-- **Welcome & Pricing Screen**: Displays the tracker title, welcome greeting, and supported stocks with current prices.
-- **Stock Lookup & Validation**: Checks user inputs against predefined stock symbols (case-insensitive) and validates quantities.
-- **Dynamic Quantity Updating**: Adding an existing stock increments its quantity rather than creating duplicate entries.
-- **Detailed Portfolio Table**: Displays a clean, aligned summary table showing stock symbol, unit price, quantity owned, and individual investment value.
-- **Portfolio Metrics**: Automatically calculates distinct stocks held, total shares owned, and cumulative investment value.
-- **Total Investment Calculator**: Standalone menu option to quickly check overall investment totals.
-- **Dual File Export**: Exports portfolio data to formatted plain text (`portfolio.txt`) and tabular CSV (`portfolio.csv`) files.
-- **Robust Input Validation**: Handles non-numeric quantities, negative numbers, zeroes, empty inputs, unknown symbols, and file errors.
-- **Persistent Interactive Loop**: Seamless navigation through an easy-to-use numbered menu until the user chooses to exit.
+- **Welcome Screen**: Displays the tracker banner, greeting, and available stocks with prices.
+- **Add Stock**: Allows users to enter a stock symbol and quantity, updating existing stocks if already present.
+- **Input Validation**: Gracefully handles unknown stock symbols, empty inputs, non-numeric values, and non-positive numbers.
+- **View Portfolio**: Displays an organized table with individual values, total stocks, total shares, and total investment.
+- **Calculate Total Investment**: Dedicated function to calculate and display overall investment value.
+- **Save Portfolio**: Saves portfolio records to both `portfolio.txt` and `portfolio.csv`.
+- **Clean Menu Loop**: Interactive menu running until the user chooses to exit.
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Component | Description |
-|---|---|
-| **Language** | Python 3 |
-| **Data Structures** | Python Dictionaries (`dict`), Lists, Tuples |
-| **Modules Used** | `csv` (Standard Library for CSV export), `datetime` (Standard Library for report timestamps) |
-| **External Dependencies** | None (Zero external dependencies or APIs required) |
+- **Language**: Python 3
+- **Libraries**: `csv` (Python Standard Library)
+- **External Dependencies**: None (No APIs, databases, or third-party packages required)
 
 ---
 
-## 📊 Predefined Stock Prices
+## 📊 Stock Prices (Sample Data)
 
-The application uses sample educational market data stored in a Python dictionary:
-
-| Symbol | Company | Sample Price |
-|:---:|:---|:---:|
-| `AAPL` | Apple Inc. | $180 |
-| `TSLA` | Tesla Inc. | $250 |
-| `GOOGL` | Alphabet Inc. (Google) | $140 |
-| `MSFT` | Microsoft Corp. | $420 |
-| `AMZN` | Amazon.com Inc. | $190 |
-| `NVDA` | NVIDIA Corp. | $135 |
-| `META` | Meta Platforms Inc. | $500 |
-| `NFLX` | Netflix Inc. | $650 |
-
----
-
-## 📁 Project Structure
-
-```text
-Stock-Portfolio-Tracker/
-│
-├── main.py            # Main application source code with menu and logic
-├── portfolio.txt      # Formatted text report generated on export
-├── portfolio.csv      # CSV export suitable for spreadsheet tools (Excel/Sheets)
-└── README.md          # Comprehensive project documentation
+```python
+stock_prices = {
+    "AAPL": 180,
+    "TSLA": 250,
+    "GOOGL": 140,
+    "MSFT": 420,
+    "AMZN": 190,
+    "NVDA": 135,
+    "META": 500,
+    "NFLX": 650
+}
 ```
 
 ---
 
-## ⚙️ Installation & Prerequisites
+## 📁 Project Folder Structure
 
-1. **Python 3.x**: Ensure Python 3.6 or higher is installed on your system.
-   Verify by running:
-   ```bash
-   python --version
-   ```
-2. **Clone / Download**: Download or clone the project repository:
-   ```bash
-   git clone https://github.com/your-username/Stock-Portfolio-Tracker.git
-   cd Stock-Portfolio-Tracker
-   ```
+```text
+Stock-Portfolio-Tracker/
+│
+├── main.py          # Main application code
+├── portfolio.txt    # Text export file
+├── portfolio.csv    # CSV export file
+└── README.md        # Project documentation
+```
 
 ---
 
 ## 💻 How to Run the Project
 
-Run the application directly via your terminal or command prompt:
+1. Ensure you have Python 3 installed:
+   ```bash
+   python --version
+   ```
 
-```bash
-python main.py
-```
+2. Run the application:
+   ```bash
+   python main.py
+   ```
 
 ---
 
-## 🖥️ User Interface & Menu Options
+## 🖥️ User Interface & Example Output
 
-Upon launching, the interactive menu presents 6 options:
-
+### Main Menu
 ```text
-----------------------------------------
-              MAIN MENU
+========================================
+       STOCK PORTFOLIO TRACKER
+========================================
+
+Welcome to Stock Portfolio Tracker!
+
+Available Stocks:
+AAPL   - $180
+TSLA   - $250
+GOOGL  - $140
+MSFT   - $420
+AMZN   - $190
+NVDA   - $135
+META   - $500
+NFLX   - $650
+
 ----------------------------------------
 1. View Available Stocks
-2. Add Stock to Portfolio
-3. View My Portfolio
+2. Add Stock
+3. View Portfolio
 4. Calculate Total Investment
-5. Save Portfolio to File
+5. Save Portfolio
 6. Exit
 ----------------------------------------
-Enter your choice (1-6):
+
+Enter your choice: 
 ```
 
-### Menu Actions:
-1. **View Available Stocks**: Prints all supported symbols and unit prices.
-2. **Add Stock to Portfolio**: Prompts for symbol and number of shares. If the stock is already in your portfolio, it updates the quantity.
-3. **View My Portfolio**: Displays the full breakdown table and grand totals.
-4. **Calculate Total Investment**: Shows a quick summary card of total shares and aggregate portfolio value.
-5. **Save Portfolio to File**: Exports the active portfolio to both `portfolio.txt` and `portfolio.csv`.
-6. **Exit**: Gracefully exits the program with a parting greeting.
-
----
-
-## 📋 Example Walkthrough & Output
-
-### 1. Adding Stocks:
-- Added **5 shares of AAPL** ($180/share = $900)
-- Added **2 shares of TSLA** ($250/share = $500)
-- Added **3 shares of GOOGL** ($140/share = $420)
-
-### 2. Portfolio Summary Table:
+### Portfolio Summary
+When adding `AAPL` (5 shares), `TSLA` (2 shares), and `GOOGL` (3 shares):
 
 ```text
-====================================================
-                 MY STOCK PORTFOLIO
-====================================================
-Stock           Price     Quantity      Total Value
-----------------------------------------------------
-AAPL             $180            5             $900
-TSLA             $250            2             $500
-GOOGL            $140            3             $420
-----------------------------------------------------
-Total Stocks Tracked : 3
-Total Shares Owned   : 10
-----------------------------------------------------
-TOTAL INVESTMENT     : $1,820
-====================================================
+========================================
+          MY STOCK PORTFOLIO
+========================================
+
+Stock    Price    Quantity    Total
+AAPL     $180     5           $900
+TSLA     $250     2           $500
+GOOGL    $140     3           $420
+
+----------------------------------------
+Total Stocks: 3 | Total Shares: 10
+TOTAL INVESTMENT: $1,820
+----------------------------------------
+
+Portfolio saved successfully!
 ```
 
-### 3. Generated Files:
+### Exported Files
 
-#### `portfolio.txt`:
+#### `portfolio.txt`
 ```text
-====================================================
-           STOCK PORTFOLIO SUMMARY REPORT
-====================================================
+========================================
+          MY STOCK PORTFOLIO
+========================================
 
-Stock           Price     Quantity      Total Value
-----------------------------------------------------
-AAPL             $180            5             $900
-TSLA             $250            2             $500
-GOOGL            $140            3             $420
-----------------------------------------------------
-Total Stocks Tracked : 3
-Total Shares Owned   : 10
-----------------------------------------------------
-TOTAL INVESTMENT     : $1,820
-====================================================
+Stock    Price    Quantity    Total
+AAPL     $180     5           $900
+TSLA     $250     2           $500
+GOOGL    $140     3           $420
+
+----------------------------------------
+Total Stocks: 3 | Total Shares: 10
+TOTAL INVESTMENT: $1,820
+----------------------------------------
 ```
 
-#### `portfolio.csv`:
+#### `portfolio.csv`
 ```csv
 Stock,Price,Quantity,Total Value
 AAPL,180,5,900
@@ -183,28 +163,8 @@ GOOGL,140,3,420
 
 ---
 
-## 🛡️ Input Validation & Error Handling
-
-The application protects against user input errors:
-- **Unknown Symbols**: Prompts the user that the symbol is unsupported and lists available symbols.
-- **Empty Inputs**: Detects blank strings and prompts the user to provide valid input.
-- **Negative & Zero Quantities**: Rejects non-positive numbers with an informative prompt.
-- **Non-Numeric Inputs**: Catches `ValueError` when non-integer strings (e.g., `"five"`, `"abc"`, `"3.14"`) are entered.
-- **Empty Portfolio Protection**: Prevents viewing or saving empty portfolios and guides users to add stocks first.
-- **File I/O Safety**: Protects file writes with `try...except (IOError, OSError)` blocks.
-
----
-
 ## 🎓 Internship Information
 
 - **Organization**: CodeAlpha
 - **Domain**: Python Development Internship
 - **Task**: Task 2 — Stock Portfolio Tracker
-- **Author**: Jay Prakash
-
----
-
-## 📜 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
